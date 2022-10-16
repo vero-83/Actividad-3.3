@@ -1,3 +1,9 @@
 #!/bin/bash
 
-g++ main.cpp DataStructs.cpp -Iincludes -o main.p
+SOURCE_FILES="\
+main.cpp \
+DataStructs.cpp \
+rk4.cpp \
+FluxFunctions.cpp"
+
+g++ $SOURCE_FILES -Iincludes -o main.p
