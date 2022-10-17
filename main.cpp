@@ -10,7 +10,7 @@ int main()
   DataStruct u(40);
   LinearFlux lf;
 
-  RungeKutta4 rk(u, lf);
+  RungeKutta4 rk(u);
   
   std::cout << u.getSize() <<std::endl;
   return 0;

@@ -10,6 +10,8 @@ class RungeKutta4
     int nSteps;
     int currentStep;
 
+    double *coeffsA, *coeffsB;
+
     // reference to solution (Un)
     DataStruct &Un;
 
@@ -17,20 +19,29 @@ class RungeKutta4
     DataStruct Ui;
 
     // flux solutions
-    DataStruct f1, f2, f3, f4;
-
-    // reference to flux class
-    FluxFunction &flux;
+    DataStruct *fi;
 
   public:
 
     // default constructor
-    RungeKutta4(DataStruct &_Un, FluxFunction &_F);
+    RungeKutta4(DataStruct &_Un);
 
     // default destructor
     ~RungeKutta4();
 
     int getNumSteps();
+
+    void initRK();
+    /*
+    For the step to work properly, the user must provide the appropriate F for the current Ui.
+    This is done this way becase the user might want to modify the Ui or Fi so that 
+    Boundary conditions can be imposed
+    */
+   void stepUi(double dt);
+   void setFi(DataStruct &_F);
+
+   // current Ui
+   DataStruct* currentU();
 };
 
 #endif // _RUNGE_KUTTA 
