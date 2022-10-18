@@ -20,6 +20,8 @@ Un(_Un)
 
   fi = new DataStruct[4];
 
+  Ui = DataStruct(Un.getSize());
+
   fi[0] = DataStruct(Un.getSize());
   fi[1] = DataStruct(Un.getSize());
   fi[2] = DataStruct(Un.getSize());
@@ -68,10 +70,33 @@ void RungeKutta4::stepUi(double dt)
   }
 };
 
+void RungeKutta4::finalizeRK(const double dt)
+{
+  double *dataUn = Un.getData();
+  double *dataUi = Ui.getData();
+  
+  for(int s = 0; s < nSteps; s++)
+  {
+    const double *dataFi = fi[s].getData();
+    const double b = coeffsB[s];
+
+    for(int n = 0; n < Ui.getSize(); n++)
+    {
+      dataUi[n] = b * dataFi[n];
+    }
+  }
+
+  const double oneDiv6 = 1. / 6.;
+  for(int n = 0; n < Ui.getSize(); n++)
+  {
+    dataUn[n] = dt * oneDiv6 * dataUi[n];
+  }
+};
+
 void RungeKutta4::setFi(DataStruct &_F)
 {
   double *dataFi = fi[currentStep].getData();
-  double *dataF  = _F.getData();
+  const double *dataF  = _F.getData();
 
   for(int n = 0; n < Ui.getSize(); n++)
   {
