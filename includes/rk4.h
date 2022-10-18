@@ -32,7 +32,7 @@ class RungeKutta4
     // intermediate solution
     DataStruct Ui;
 
-    // flux solutions
+    // RHS 
     DataStruct *fi;
 
   public:
