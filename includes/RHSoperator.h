@@ -4,16 +4,16 @@
 #include "DataStructs.h"
 #include "FluxFunctions.h"
 
-class Operator
+class RHSOperator
 {
 public:
-  Operator();
-  ~Operator();
+  RHSOperator();
+  ~RHSOperator();
 
   virtual void eval() = 0;
 };
 
-class Central1D : public Operator
+class Central1D : public RHSOperator
 {
 private:
 

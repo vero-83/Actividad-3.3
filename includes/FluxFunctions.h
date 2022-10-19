@@ -9,7 +9,11 @@ class FluxFunction
   public:
     FluxFunction();
 
+    // in U; out F
     virtual void computeFlux(DataStruct &U, DataStruct &F) = 0;
+
+    // same as above but at the node level
+    virtual double computeFlux(const double &Ui) = 0;
 };
 
 class LinearFlux : public FluxFunction
@@ -20,7 +24,11 @@ class LinearFlux : public FluxFunction
   public:
     LinearFlux();
 
+    // in U; out F
     virtual void computeFlux(DataStruct &U, DataStruct &F);
+
+    // same as above but at the node level
+    virtual double computeFlux(const double &Ui);
 };
 
 #endif // _FLUX_FUNCTIONS

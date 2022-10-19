@@ -20,3 +20,8 @@ void LinearFlux::computeFlux(DataStruct &U, DataStruct &F)
     dataF[n] = c * dataU[n];
   };
 };
+
+double LinearFlux::computeFlux(const double &Ui)
+{
+  return c * Ui;
+};
