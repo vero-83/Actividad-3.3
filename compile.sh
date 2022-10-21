@@ -7,4 +7,4 @@ rk4.cpp \
 FluxFunctions.cpp \
 RHSoperator.cpp"
 
-g++ $SOURCE_FILES -Iincludes -o main.p
+g++ -g -O0 $SOURCE_FILES -Iincludes -o main.p

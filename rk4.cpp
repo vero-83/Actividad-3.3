@@ -18,19 +18,23 @@ Un(_Un)
   coeffsB[2] = 2.;
   coeffsB[3] = 1.;
 
-  fi = new DataStruct[4];
+  fi = new DataStruct[nSteps];
 
-  Ui = DataStruct(Un.getSize());
+  fi[0].setSize(Un.getSize());
+  fi[1].setSize(Un.getSize());
+  fi[2].setSize(Un.getSize());
+  fi[3].setSize(Un.getSize());
 
-  fi[0] = DataStruct(Un.getSize());
-  fi[1] = DataStruct(Un.getSize());
-  fi[2] = DataStruct(Un.getSize());
-  fi[3] = DataStruct(Un.getSize());
+  Ui.setSize(Un.getSize());
+  double *kk = Ui.getData();
+  kk[39] = 999;
 };
 
 RungeKutta4::~RungeKutta4()
 {
-  delete[] fi, coeffsA, coeffsB;
+  delete[] fi;
+  delete[] coeffsA;
+  delete[] coeffsB;
 };
 
 int RungeKutta4::getNumSteps()

@@ -11,6 +11,8 @@ public:
   ~RHSOperator();
 
   virtual void eval() = 0;
+
+  virtual DataStruct& ref2RHS() = 0;
 };
 
 class Central1D : public RHSOperator
@@ -35,6 +37,9 @@ public:
   ~Central1D();
 
   virtual void eval();
+
+  virtual DataStruct& ref2RHS();
+
 };
 
 #endif // _RHS_OPERATOR

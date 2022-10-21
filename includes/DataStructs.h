@@ -8,6 +8,7 @@ class DataStruct
   private:
     int size;
     double *data;
+    bool initialized;
 
   public:
 
@@ -22,6 +23,10 @@ class DataStruct
     int getSize();
     double* getData();
     double getData(int i);
+
+    void setSize(int _size);
+
+    DataStruct& operator=(DataStruct d);
 
 };
 

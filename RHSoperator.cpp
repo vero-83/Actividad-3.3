@@ -17,7 +17,7 @@ Central1D::Central1D(DataStruct &_U,
                      FluxFunction &_F):
 U(_U), mesh(_mesh), F(_F)
 {
-  RHS = DataStruct(_U.getSize());
+  RHS.setSize(_U.getSize());
 }
 
 Central1D::~Central1D()
@@ -51,4 +51,9 @@ void Central1D::eval()
   }
 
   dataRHS[len-1] = dataRHS[0];
+}
+
+DataStruct& Central1D::ref2RHS()
+{
+  return RHS;
 }
