@@ -26,7 +26,7 @@ class DataStruct
 
     void setSize(int _size);
 
-    DataStruct& operator=(DataStruct d);
+    DataStruct& operator=(DataStruct &d);
 
 };
 

@@ -11,6 +11,7 @@ public:
   ~RHSOperator();
 
   virtual void eval() = 0;
+  virtual void eval(DataStruct &Uin) = 0;
 
   virtual DataStruct& ref2RHS() = 0;
 };
@@ -32,11 +33,14 @@ private:
   // reference to flux function
   FluxFunction &F;
 
+  void evalRHS(DataStruct &Uin);
+
 public:
   Central1D(DataStruct &_U, DataStruct &_mesh, FluxFunction &_F);
   ~Central1D();
 
   virtual void eval();
+  virtual void eval(DataStruct &Uin);
 
   virtual DataStruct& ref2RHS();
 

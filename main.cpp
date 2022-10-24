@@ -2,6 +2,7 @@
 #include <fstream> // ofile
 #include <string>
 #include <math.h>
+#include <iostream>
 
 #include "DataStructs.h"
 #include "rk4.h"
@@ -34,10 +35,36 @@ int main()
     dataU[j] = sin(2. * M_PI * datax[j]);
   }
 
+  // Operator
+  Central1D rhs(u,xj,lf);
+
+  double CFL = .1;
+  const double dt = CFL*datax[1];
+
   // Output Initial Condition
   write2File(xj, u, "initialCondition.csv");
 
-  std::cout << u.getSize() <<std::endl;
+  double t_final = .5;
+  double time = 0.;
+  DataStruct Ui(u.getSize()); // temp. data
+  while(time < t_final)
+  {
+
+    // take RK step
+    rk.initRK();
+    for(int s = 0; s < rk.getNumSteps(); s++)
+    {
+      rk.stepUi(dt);
+      Ui = *rk.currentU();
+      rhs.eval(Ui);
+      rk.setFi(rhs.ref2RHS());
+    }
+    rk.finalizeRK(dt);
+    time += dt;
+  }
+
+  write2File(xj, u, "final.csv");
+
   return 0;
 }
 

@@ -26,8 +26,6 @@ Un(_Un)
   fi[3].setSize(Un.getSize());
 
   Ui.setSize(Un.getSize());
-  double *kk = Ui.getData();
-  kk[39] = 999;
 };
 
 RungeKutta4::~RungeKutta4()
@@ -49,7 +47,7 @@ void RungeKutta4::initRK()
 
 void RungeKutta4::stepUi(double dt)
 {
-  assert(currentStep != nSteps-1);
+  assert(currentStep < nSteps);
 
   if(currentStep == 0)
   {
@@ -78,6 +76,12 @@ void RungeKutta4::finalizeRK(const double dt)
 {
   double *dataUn = Un.getData();
   double *dataUi = Ui.getData();
+
+  // set Ui to 0
+  for(int n = 0; n < Ui.getSize(); n++)
+  {
+    dataUi[n] = 0.;
+  }
   
   for(int s = 0; s < nSteps; s++)
   {
@@ -86,14 +90,14 @@ void RungeKutta4::finalizeRK(const double dt)
 
     for(int n = 0; n < Ui.getSize(); n++)
     {
-      dataUi[n] = b * dataFi[n];
+      dataUi[n] += b * dataFi[n];
     }
   }
 
   const double oneDiv6 = 1. / 6.;
   for(int n = 0; n < Ui.getSize(); n++)
   {
-    dataUn[n] = dt * oneDiv6 * dataUi[n];
+    dataUn[n] += dt * oneDiv6 * dataUi[n];
   }
 };
 

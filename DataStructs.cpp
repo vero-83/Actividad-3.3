@@ -20,10 +20,14 @@ void DataStruct::setSize(int _size)
 {
   if(initialized)
   {
-    // this case isn't handled. For the time being
-    // simple abort program!
-    std::cout<<"Trying to allocate an already allocated DataStruct. Aborting..."<<std::endl;
-    exit(0);
+    // check if it's the same size
+    if(_size != size)
+    {
+      // this case isn't handled. For the time being
+      // simple abort program!
+      std::cout<<"Trying to allocate an already allocated DataStruct. Aborting..."<<std::endl;
+      exit(0);
+    }
   }else
   {
     data = new double[_size];
@@ -53,10 +57,16 @@ double DataStruct::getData(int i)
 };
 
 
-DataStruct& DataStruct::operator=(DataStruct rhs)
+DataStruct& DataStruct::operator=(DataStruct &rhs)
 {
-  size = rhs.getSize();
-  data = rhs.getData();
-  initialized = true;
+  this->setSize(rhs.getSize());
+  double *dataRHS = rhs.getData();
+
+  // copy data
+  for(int n = 0; n < size; n++)
+  {
+    data[n] = dataRHS[n];
+  }
+
   return *this;
 }
