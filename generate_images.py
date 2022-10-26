@@ -29,8 +29,8 @@ with open('final.csv', mode ='r')as file:
         Ufinal.append(float(lines[1]))
         
 #print(X, Uinit)
-plt.plot(X, Uinit, label="Init")
-plt.plot(X, Ufinal, label="Final")
+plt.plot(X, Uinit, '.-', color = 'k', label="Init")
+plt.plot(X, Ufinal, '.-', color = 'r', label="Final")
 plt.legend()
 plt.grid()
 plt.show()

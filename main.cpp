@@ -3,17 +3,33 @@
 #include <string>
 #include <math.h>
 #include <iostream>
+#include <iomanip> // set precision
+#include <mpi.h>
 
 #include "DataStructs.h"
 #include "rk4.h"
 #include "FluxFunctions.h"
 #include "RHSoperator.h"
 
+// declare supporting functions
 void write2File(DataStruct &X, DataStruct &U, std::string name);
+double calcL2norm(DataStruct &u, DataStruct &uinit);
 
-int main()
+
+int main(int narg, char **argv)
 {
-  int numPoints =  40;
+  int numPoints =  80;
+
+  if(narg != 2)
+  {
+    std::cout<< "Wrong number of arguments. You should include:" << std::endl;
+    std::cout<< "    Num points" << std::endl;
+    return 1;
+  }else
+  {
+    numPoints = std::stoi(argv[1]);
+  }
+
   // solution data
   DataStruct u(numPoints), f(numPoints), xj(numPoints);
 
@@ -32,23 +48,32 @@ int main()
     datax[j] = double(j)/double(numPoints-1);
 
     // init Uj
-    dataU[j] = sin(2. * M_PI * datax[j]);
+    dataU[j] = sin(2*2. * M_PI * datax[j]);
   }
+
+  DataStruct Uinit;
+  Uinit = u;
 
   // Operator
   Central1D rhs(u,xj,lf);
 
-  double CFL = .1;
-  const double dt = CFL*datax[1];
+  double CFL = 2.4;
+  double dt = CFL*datax[1];
 
   // Output Initial Condition
   write2File(xj, u, "initialCondition.csv");
 
-  double t_final = .5;
+  double t_final = 5.;
   double time = 0.;
   DataStruct Ui(u.getSize()); // temp. data
+
+  // init timer
+  double compTime = MPI_Wtime();
+
+  // main loop
   while(time < t_final)
   {
+    if(time+dt >= t_final) dt = t_final - time;
 
     // take RK step
     rk.initRK();
@@ -63,12 +88,22 @@ int main()
     time += dt;
   }
 
+  // finishe timer
+  compTime = MPI_Wtime() - compTime;
+
   write2File(xj, u, "final.csv");
+
+  // L2 norm
+  double err = calcL2norm(Uinit, u);
+  std::cout << std::setprecision(4) << "Comp. time: " << compTime << " sec. Error: " << err << std::endl;
 
   return 0;
 }
 
 
+// ==================================================================
+// AUXILIARY FUNCTIONS
+// ==================================================================
 void write2File(DataStruct &X, DataStruct &U, std::string name)
 {
   std::ofstream file;
@@ -85,4 +120,18 @@ void write2File(DataStruct &X, DataStruct &U, std::string name)
   }
 
   file.close();
+}
+
+double calcL2norm(DataStruct &u, DataStruct &uinit)
+{
+  double err = 0.;
+  const double *dataU = u.getData();
+  const double *dataInit = uinit.getData();
+
+  for(int n = 0; n < u.getSize(); n++)
+  {
+    err += (dataU[n] - dataInit[n])*(dataU[n] - dataInit[n]);
+  }
+
+  return sqrt( err );
 }
