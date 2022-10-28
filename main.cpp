@@ -19,15 +19,18 @@ double calcL2norm(DataStruct &u, DataStruct &uinit);
 int main(int narg, char **argv)
 {
   int numPoints =  80;
+  double k = 2.; // wave number
 
-  if(narg != 2)
+  if(narg != 3)
   {
     std::cout<< "Wrong number of arguments. You should include:" << std::endl;
     std::cout<< "    Num points" << std::endl;
+    std::cout<< "    Wave number" << std::endl;
     return 1;
   }else
   {
     numPoints = std::stoi(argv[1]);
+    k = std::stod(argv[2]);
   }
 
   // solution data
@@ -48,7 +51,7 @@ int main(int narg, char **argv)
     datax[j] = double(j)/double(numPoints-1);
 
     // init Uj
-    dataU[j] = sin(2*2. * M_PI * datax[j]);
+    dataU[j] = sin(k*2. * M_PI * datax[j]);
   }
 
   DataStruct Uinit;
@@ -63,7 +66,7 @@ int main(int narg, char **argv)
   // Output Initial Condition
   write2File(xj, u, "initialCondition.csv");
 
-  double t_final = 5.;
+  double t_final = 1.;
   double time = 0.;
   DataStruct Ui(u.getSize()); // temp. data
 
@@ -95,7 +98,10 @@ int main(int narg, char **argv)
 
   // L2 norm
   double err = calcL2norm(Uinit, u);
-  std::cout << std::setprecision(4) << "Comp. time: " << compTime << " sec. Error: " << err << std::endl;
+  std::cout << std::setprecision(4) << "Comp. time: " << compTime;
+  std::cout << " sec. Error: " << err/k;
+  std::cout << " kdx: " << k*datax[1]*2.*M_PI;
+  std::cout << std::endl;
 
   return 0;
 }
