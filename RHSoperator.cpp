@@ -29,14 +29,14 @@ void Central1D::evalRHS(DataStruct &Uin)
 {
   // the BC should be included in the mesh
   // momentarily done here by hand
-  double *dataRHS = RHS.getData();
-  const double *dataU = Uin.getData();
-  const double *dataMesh = mesh.getData();
+  FLOATTYPE *dataRHS = RHS.getData();
+  const FLOATTYPE *dataU = Uin.getData();
+  const FLOATTYPE *dataMesh = mesh.getData();
   const int len = U.getSize();
   
   for(int j = 0; j < len; j++)
   {
-    double dx;
+    FLOATTYPE dx;
     if(j == 0)
     {
       dx = dataMesh[len-1] - dataMesh[len-2];

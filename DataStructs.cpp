@@ -11,7 +11,7 @@ DataStruct::DataStruct()
 
 DataStruct::DataStruct(int _size)
 {
-  data = new double[_size];
+  data = new FLOATTYPE[_size];
   size = _size;
   initialized = true;
 };
@@ -30,7 +30,7 @@ void DataStruct::setSize(int _size)
     }
   }else
   {
-    data = new double[_size];
+    data = new FLOATTYPE[_size];
     size = _size;
     initialized = true;
   }
@@ -46,12 +46,12 @@ int DataStruct::getSize()
   return size;
 };
 
-double* DataStruct::getData()
+FLOATTYPE* DataStruct::getData()
 {
   return data;
 };
 
-double DataStruct::getData(int i)
+FLOATTYPE DataStruct::getData(int i)
 {
   return data[i];
 };
@@ -60,7 +60,7 @@ double DataStruct::getData(int i)
 DataStruct& DataStruct::operator=(DataStruct &rhs)
 {
   this->setSize(rhs.getSize());
-  double *dataRHS = rhs.getData();
+  FLOATTYPE *dataRHS = rhs.getData();
 
   // copy data
   for(int n = 0; n < size; n++)

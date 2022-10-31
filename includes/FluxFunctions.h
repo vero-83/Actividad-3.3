@@ -13,13 +13,13 @@ class FluxFunction
     virtual void computeFlux(DataStruct &U, DataStruct &F) = 0;
 
     // same as above but at the node level
-    virtual double computeFlux(const double &Ui) = 0;
+    virtual FLOATTYPE computeFlux(const FLOATTYPE &Ui) = 0;
 };
 
 class LinearFlux : public FluxFunction
 {
   private:
-    double c;
+    FLOATTYPE c;
 
   public:
     LinearFlux();
@@ -28,7 +28,7 @@ class LinearFlux : public FluxFunction
     virtual void computeFlux(DataStruct &U, DataStruct &F);
 
     // same as above but at the node level
-    virtual double computeFlux(const double &Ui);
+    virtual FLOATTYPE computeFlux(const FLOATTYPE &Ui);
 };
 
 #endif // _FLUX_FUNCTIONS

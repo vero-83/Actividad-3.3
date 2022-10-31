@@ -3,11 +3,17 @@
 
 #include <cstddef>
 
+#ifdef _DOUBLE_
+#define FLOATTYPE double
+#else
+#define FLOATTYPE float
+#endif
+
 class DataStruct 
 {
   private:
     int size;
-    double *data;
+    FLOATTYPE *data;
     bool initialized;
 
   public:
@@ -21,8 +27,8 @@ class DataStruct
 
     // accessors
     int getSize();
-    double* getData();
-    double getData(int i);
+    FLOATTYPE* getData();
+    FLOATTYPE getData(int i);
 
     void setSize(int _size);
 

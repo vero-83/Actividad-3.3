@@ -13,13 +13,13 @@
 
 // declare supporting functions
 void write2File(DataStruct &X, DataStruct &U, std::string name);
-double calcL2norm(DataStruct &u, DataStruct &uinit);
+FLOATTYPE calcL2norm(DataStruct &u, DataStruct &uinit);
 
 
 int main(int narg, char **argv)
 {
   int numPoints =  80;
-  double k = 2.; // wave number
+  FLOATTYPE k = 2.; // wave number
 
   if(narg != 3)
   {
@@ -30,7 +30,7 @@ int main(int narg, char **argv)
   }else
   {
     numPoints = std::stoi(argv[1]);
-    k = std::stod(argv[2]);
+    k         = std::stod(argv[2]);
   }
 
   // solution data
@@ -43,12 +43,12 @@ int main(int narg, char **argv)
   RungeKutta4 rk(u);
 
   // Initial Condition
-  double *datax = xj.getData();
-  double *dataU = u.getData();
+  FLOATTYPE *datax = xj.getData();
+  FLOATTYPE *dataU = u.getData();
   for(int j = 0; j < numPoints; j++)
   {
     // xj
-    datax[j] = double(j)/double(numPoints-1);
+    datax[j] = FLOATTYPE(j)/FLOATTYPE(numPoints-1);
 
     // init Uj
     dataU[j] = sin(k*2. * M_PI * datax[j]);
@@ -60,18 +60,18 @@ int main(int narg, char **argv)
   // Operator
   Central1D rhs(u,xj,lf);
 
-  double CFL = 2.4;
-  double dt = CFL*datax[1];
+  FLOATTYPE CFL = 2.4;
+  FLOATTYPE dt = CFL*datax[1];
 
   // Output Initial Condition
   write2File(xj, u, "initialCondition.csv");
 
-  double t_final = 1.;
-  double time = 0.;
+  FLOATTYPE t_final = 1.;
+  FLOATTYPE time = 0.;
   DataStruct Ui(u.getSize()); // temp. data
 
   // init timer
-  double compTime = MPI_Wtime();
+  FLOATTYPE compTime = MPI_Wtime();
 
   // main loop
   while(time < t_final)
@@ -97,7 +97,7 @@ int main(int narg, char **argv)
   write2File(xj, u, "final.csv");
 
   // L2 norm
-  double err = calcL2norm(Uinit, u);
+  FLOATTYPE err = calcL2norm(Uinit, u);
   std::cout << std::setprecision(4) << "Comp. time: " << compTime;
   std::cout << " sec. Error: " << err/k;
   std::cout << " kdx: " << k*datax[1]*2.*M_PI;
@@ -128,11 +128,11 @@ void write2File(DataStruct &X, DataStruct &U, std::string name)
   file.close();
 }
 
-double calcL2norm(DataStruct &u, DataStruct &uinit)
+FLOATTYPE calcL2norm(DataStruct &u, DataStruct &uinit)
 {
-  double err = 0.;
-  const double *dataU = u.getData();
-  const double *dataInit = uinit.getData();
+  FLOATTYPE err = 0.;
+  const FLOATTYPE *dataU = u.getData();
+  const FLOATTYPE *dataInit = uinit.getData();
 
   for(int n = 0; n < u.getSize(); n++)
   {

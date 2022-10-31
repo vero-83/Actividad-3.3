@@ -24,7 +24,7 @@ class RungeKutta4
     int nSteps;
     int currentStep;
 
-    double *coeffsA, *coeffsB;
+    FLOATTYPE *coeffsA, *coeffsB;
 
     // reference to solution (Un)
     DataStruct &Un;
@@ -49,14 +49,14 @@ class RungeKutta4
     void initRK();
 
     // finalizes the RK (updates Un)
-    void finalizeRK(const double dt);
+    void finalizeRK(const FLOATTYPE dt);
 
     /*
     For the step to work properly, the user must provide the appropriate F for the current Ui.
     This is done this way becase the user might want to modify the Ui or Fi so that 
     Boundary conditions can be imposed
     */
-   void stepUi(double dt);
+   void stepUi(FLOATTYPE dt);
    void setFi(DataStruct &_F);
 
    // current Ui

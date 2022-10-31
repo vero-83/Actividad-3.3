@@ -12,8 +12,8 @@ LinearFlux::LinearFlux()
 
 void LinearFlux::computeFlux(DataStruct &U, DataStruct &F)
 {
-  double *dataU = U.getData();
-  double *dataF = F.getData();
+  FLOATTYPE *dataU = U.getData();
+  FLOATTYPE *dataF = F.getData();
 
   for(int n = 0; n < U.getSize(); n++)
   {
@@ -21,7 +21,7 @@ void LinearFlux::computeFlux(DataStruct &U, DataStruct &F)
   };
 };
 
-double LinearFlux::computeFlux(const double &Ui)
+FLOATTYPE LinearFlux::computeFlux(const FLOATTYPE &Ui)
 {
   return c * Ui;
 };
