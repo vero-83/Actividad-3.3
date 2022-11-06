@@ -2,7 +2,6 @@
 #include <fstream> // ofile
 #include <string>
 #include <math.h>
-#include <iostream>
 #include <iomanip> // set precision
 #include <mpi.h>
 
