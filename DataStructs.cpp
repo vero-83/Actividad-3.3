@@ -25,8 +25,7 @@ void DataStruct::setSize(int _size)
     {
       // this case isn't handled. For the time being
       // simple abort program!
-      std::cout<<"Trying to allocate an already allocated DataStruct. Aborting..."<<std::endl;
-      exit(0);
+      std::runtime_error("Trying to allocate an already allocated DataStruct. Aborting...");
     }
   }else
   {
@@ -40,22 +39,6 @@ DataStruct::~DataStruct()
 {
   if(initialized) delete[] data;
 };
-
-int DataStruct::getSize()
-{
-  return size;
-};
-
-FLOATTYPE* DataStruct::getData()
-{
-  return data;
-};
-
-FLOATTYPE DataStruct::getData(int i)
-{
-  return data[i];
-};
-
 
 DataStruct& DataStruct::operator=(DataStruct &rhs)
 {

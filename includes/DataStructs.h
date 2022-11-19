@@ -26,9 +26,20 @@ class DataStruct
     ~DataStruct();
 
     // accessors
-    int getSize();
-    FLOATTYPE* getData();
-    FLOATTYPE getData(int i);
+    inline int getSize()
+    {
+      return size;
+    }
+
+    inline FLOATTYPE* getData()
+    {
+      return data;
+    }
+
+    inline FLOATTYPE getData(int i)
+    {
+      return data[i];
+    }
 
     void setSize(int _size);
 
