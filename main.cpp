@@ -10,9 +10,15 @@
 #include "FluxFunctions.h"
 #include "RHSoperator.h"
 
+#ifdef _DOUBLE_
+#define FLOATTYPE double
+#else
+#define FLOATTYPE float
+#endif
+
 // declare supporting functions
-void write2File(DataStruct &X, DataStruct &U, std::string name);
-FLOATTYPE calcL2norm(DataStruct &u, DataStruct &uinit);
+void write2File(DataStruct<FLOATTYPE> &X, DataStruct<FLOATTYPE> &U, std::string name);
+FLOATTYPE calcL2norm(DataStruct<FLOATTYPE> &u, DataStruct<FLOATTYPE> &uinit);
 
 
 int main(int narg, char **argv)
@@ -33,13 +39,13 @@ int main(int narg, char **argv)
   }
 
   // solution data
-  DataStruct u(numPoints), f(numPoints), xj(numPoints);
+  DataStruct<FLOATTYPE> u(numPoints), f(numPoints), xj(numPoints);
 
   // flux function
-  LinearFlux lf;
+  LinearFlux<FLOATTYPE> lf;
 
   // time solver
-  RungeKutta4 rk(u);
+  RungeKutta4<FLOATTYPE> rk(u);
 
   // Initial Condition
   FLOATTYPE *datax = xj.getData();
@@ -53,11 +59,11 @@ int main(int narg, char **argv)
     dataU[j] = sin(k*2. * M_PI * datax[j]);
   }
 
-  DataStruct Uinit;
+  DataStruct<FLOATTYPE> Uinit;
   Uinit = u;
 
   // Operator
-  Central1D rhs(u,xj,lf);
+  Central1D<FLOATTYPE> rhs(u,xj,lf);
 
   FLOATTYPE CFL = 2.4;
   FLOATTYPE dt = CFL*datax[1];
@@ -67,10 +73,10 @@ int main(int narg, char **argv)
 
   FLOATTYPE t_final = 1.;
   FLOATTYPE time = 0.;
-  DataStruct Ui(u.getSize()); // temp. data
+  DataStruct<FLOATTYPE> Ui(u.getSize()); // temp. data
 
   // init timer
-  FLOATTYPE compTime = MPI_Wtime();
+  double compTime = MPI_Wtime();
 
   // main loop
   while(time < t_final)
@@ -109,7 +115,7 @@ int main(int narg, char **argv)
 // ==================================================================
 // AUXILIARY FUNCTIONS
 // ==================================================================
-void write2File(DataStruct &X, DataStruct &U, std::string name)
+void write2File(DataStruct<FLOATTYPE> &X, DataStruct<FLOATTYPE> &U, std::string name)
 {
   std::ofstream file;
   file.open(name,std::ios_base::trunc);
@@ -127,7 +133,7 @@ void write2File(DataStruct &X, DataStruct &U, std::string name)
   file.close();
 }
 
-FLOATTYPE calcL2norm(DataStruct &u, DataStruct &uinit)
+FLOATTYPE calcL2norm(DataStruct<FLOATTYPE> &u, DataStruct<FLOATTYPE> &uinit)
 {
   FLOATTYPE err = 0.;
   const FLOATTYPE *dataU = u.getData();

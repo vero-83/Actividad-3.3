@@ -2,21 +2,8 @@
 #include "DataStructs.h"
 #include <iostream>
 
-DataStruct::DataStruct()
-{
-  size = 0;
-  data = NULL;
-  initialized = false;
-};
-
-DataStruct::DataStruct(int _size)
-{
-  data = new FLOATTYPE[_size];
-  size = _size;
-  initialized = true;
-};
-
-void DataStruct::setSize(int _size)
+template<class T>
+void DataStruct<T>::setSize(int _size)
 {
   if(initialized)
   {
@@ -29,27 +16,11 @@ void DataStruct::setSize(int _size)
     }
   }else
   {
-    data = new FLOATTYPE[_size];
+    data = new T[_size];
     size = _size;
     initialized = true;
   }
 };
 
-DataStruct::~DataStruct() 
-{
-  if(initialized) delete[] data;
-};
-
-DataStruct& DataStruct::operator=(DataStruct &rhs)
-{
-  this->setSize(rhs.getSize());
-  FLOATTYPE *dataRHS = rhs.getData();
-
-  // copy data
-  for(int n = 0; n < size; n++)
-  {
-    data[n] = dataRHS[n];
-  }
-
-  return *this;
-}
+template class DataStruct<float>;
+template class DataStruct<double>;

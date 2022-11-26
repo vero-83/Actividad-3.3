@@ -18,27 +18,28 @@ This class allows time stepping. For flexibility each RK step is taken as follow
 #include "DataStructs.h"
 #include "FluxFunctions.h"
 
+template<class T>
 class RungeKutta4 
 {
   private:
     int nSteps;
     int currentStep;
 
-    FLOATTYPE *coeffsA, *coeffsB;
+    T *coeffsA, *coeffsB;
 
     // reference to solution (Un)
-    DataStruct &Un;
+    DataStruct<T> &Un;
 
     // intermediate solution
-    DataStruct Ui;
+    DataStruct<T> Ui;
 
     // RHS 
-    DataStruct *fi;
+    DataStruct<T> *fi;
 
   public:
 
     // default constructor
-    RungeKutta4(DataStruct &_Un);
+    RungeKutta4(DataStruct<T> &_Un);
 
     // default destructor
     ~RungeKutta4();
@@ -49,18 +50,18 @@ class RungeKutta4
     void initRK();
 
     // finalizes the RK (updates Un)
-    void finalizeRK(const FLOATTYPE dt);
+    void finalizeRK(const T dt);
 
     /*
     For the step to work properly, the user must provide the appropriate F for the current Ui.
     This is done this way becase the user might want to modify the Ui or Fi so that 
     Boundary conditions can be imposed
     */
-   void stepUi(FLOATTYPE dt);
-   void setFi(DataStruct &_F);
+   void stepUi(T dt);
+   void setFi(DataStruct<T> &_F);
 
    // current Ui
-   DataStruct* currentU();
+   DataStruct<T>* currentU();
 };
 
 #endif // _RUNGE_KUTTA 

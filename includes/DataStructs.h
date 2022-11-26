@@ -3,27 +3,35 @@
 
 #include <cstddef>
 
-#ifdef _DOUBLE_
-#define FLOATTYPE double
-#else
-#define FLOATTYPE float
-#endif
-
+template<class T>
 class DataStruct 
 {
   private:
     int size;
-    FLOATTYPE *data;
+    T *data;
     bool initialized;
 
   public:
 
     // constructors & destructor
-    DataStruct();
+    inline DataStruct()
+    {
+      size = 0;
+      data = NULL;
+      initialized = false;
+    };
 
-    DataStruct(int size);
+    inline DataStruct(int _size)
+    {
+      data = new T[_size];
+      size = _size;
+      initialized = true;
+    };
 
-    ~DataStruct();
+    inline ~DataStruct() 
+    {
+      if(initialized) delete[] data;
+    };
 
     // accessors
     inline int getSize()
@@ -31,19 +39,31 @@ class DataStruct
       return size;
     }
 
-    inline FLOATTYPE* getData()
+    inline T* getData()
     {
       return data;
     }
 
-    inline FLOATTYPE getData(int i)
+    inline T getData(int i)
     {
       return data[i];
     }
 
     void setSize(int _size);
 
-    DataStruct& operator=(DataStruct &d);
+    inline DataStruct<T>& operator=(DataStruct<T> &rhs)
+    {
+      this->setSize(rhs.getSize());
+      T *dataRHS = rhs.getData();
+
+      // copy data
+      for(int n = 0; n < size; n++)
+      {
+        data[n] = dataRHS[n];
+      }
+
+      return *this;
+    }
 
 };
 

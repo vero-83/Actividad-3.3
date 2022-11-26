@@ -1,42 +1,46 @@
 #include "RHSoperator.h"
 
-RHSOperator::RHSOperator()
+template<class T>
+RHSOperator<T>::RHSOperator()
 {
 
 }
 
 
-RHSOperator::~RHSOperator()
+template<class T>
+RHSOperator<T>::~RHSOperator()
 {
 
 }
 
-
-Central1D::Central1D(DataStruct &_U, 
-                     DataStruct &_mesh, 
-                     FluxFunction &_F):
+template<class T>
+Central1D<T>::Central1D(DataStruct<T> &_U, 
+                     DataStruct<T> &_mesh, 
+                     FluxFunction<T> &_F):
 U(_U), mesh(_mesh), F(_F)
 {
   RHS.setSize(_U.getSize());
 }
 
-Central1D::~Central1D()
+template<class T>
+Central1D<T>::~Central1D()
 {
 
 }
 
-void Central1D::evalRHS(DataStruct &Uin)
+template<class T>
+void Central1D<T>::evalRHS(DataStruct<T> &Uin)
 {
   // the BC should be included in the mesh
   // momentarily done here by hand
-  FLOATTYPE *dataRHS = RHS.getData();
-  const FLOATTYPE *dataU = Uin.getData();
-  const FLOATTYPE *dataMesh = mesh.getData();
+  T *dataRHS = RHS.getData();
+  const T *dataU = Uin.getData();
+  const T *dataMesh = mesh.getData();
   const int len = U.getSize();
   
   for(int j = 0; j < len; j++)
   {
-    FLOATTYPE dx;
+    T dx;
     if(j == 0)
     {
       dx = dataMesh[len-1] - dataMesh[len-2];
@@ -53,17 +57,27 @@ void Central1D::evalRHS(DataStruct &Uin)
   dataRHS[len-1] = dataRHS[0];
 }
 
-void Central1D::eval()
+template<class T>
+void Central1D<T>::eval()
 {
   evalRHS(U);
 }
 
-void Central1D::eval(DataStruct &Uin)
+template<class T>
+void Central1D<T>::eval(DataStruct<T> &Uin)
 {
   evalRHS(Uin);
 }
 
-DataStruct& Central1D::ref2RHS()
+template<class T>
+DataStruct<T>& Central1D<T>::ref2RHS()
 {
   return RHS;
 }
+
+
+template class RHSOperator<float>;
+template class RHSOperator<double>;
+
+template class Central1D<float>;
+template class Central1D<double>;

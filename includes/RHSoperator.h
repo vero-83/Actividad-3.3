@@ -4,6 +4,7 @@
 #include "DataStructs.h"
 #include "FluxFunctions.h"
 
+template<class T>
 class RHSOperator
 {
 public:
@@ -11,38 +12,39 @@ public:
   ~RHSOperator();
 
   virtual void eval() = 0;
-  virtual void eval(DataStruct &Uin) = 0;
+  virtual void eval(DataStruct<T> &Uin) = 0;
 
-  virtual DataStruct& ref2RHS() = 0;
+  virtual DataStruct<T>& ref2RHS() = 0;
 };
 
-class Central1D : public RHSOperator
+template<class T>
+class Central1D : public RHSOperator<T>
 {
 private:
 
   // structure containing the RHS values
-  DataStruct RHS;
+  DataStruct<T> RHS;
   
   // reference to current solution
-  DataStruct &U;
+  DataStruct<T> &U;
 
   // reference to mesh 
   // TODO: change to a mesh structure
-  DataStruct &mesh;
+  DataStruct<T> &mesh;
 
   // reference to flux function
-  FluxFunction &F;
+  FluxFunction<T> &F;
 
-  void evalRHS(DataStruct &Uin);
+  void evalRHS(DataStruct<T> &Uin);
 
 public:
-  Central1D(DataStruct &_U, DataStruct &_mesh, FluxFunction &_F);
+  Central1D(DataStruct<T> &_U, DataStruct<T> &_mesh, FluxFunction<T> &_F);
   ~Central1D();
 
   virtual void eval();
-  virtual void eval(DataStruct &Uin);
+  virtual void eval(DataStruct<T> &Uin);
 
-  virtual DataStruct& ref2RHS();
+  virtual DataStruct<T>& ref2RHS();
 
 };
 
