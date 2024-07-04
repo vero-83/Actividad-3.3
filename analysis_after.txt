@@ -1,0 +1,434 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  us/call  us/call  name    
+ 44.44      0.04     0.04      832    48.08    60.10  Central1D<float>::evalRHS(DataStruct<float>&)
+ 22.22      0.06     0.02      833    24.01    24.02  DataStruct<float>::operator=(DataStruct<float> const&)
+ 11.11      0.07     0.01  1462087     0.01     0.01  DataStruct<float>::getSize() const
+ 11.11      0.08     0.01   832000     0.01     0.01  EulerFlux<float>::computeFlux(float const&)
+ 11.11      0.09     0.01      208    48.08    68.64  RungeKutta4<float>::finalizeRK(float)
+  0.00      0.09     0.00    10500     0.00     0.00  DataStruct<float>::operator()(int, int)
+  0.00      0.09     0.00     9530     0.00     0.00  DataStruct<float>::getData() const
+  0.00      0.09     0.00     1040     0.00     0.00  RungeKutta4<float>::getNumSteps()
+  0.00      0.09     0.00      839     0.00     0.00  DataStruct<float>::setSize(int)
+  0.00      0.09     0.00      832     0.00     3.43  RungeKutta4<float>::setFi(DataStruct<float>&)
+  0.00      0.09     0.00      832     0.00     3.43  RungeKutta4<float>::stepUi(float)
+  0.00      0.09     0.00      832     0.00     0.00  RungeKutta4<float>::currentU()
+  0.00      0.09     0.00      832     0.00    60.10  Central1D<float>::eval(DataStruct<float>&)
+  0.00      0.09     0.00      832     0.00     0.00  Central1D<float>::ref2RHS()
+  0.00      0.09     0.00      208     0.00     0.00  RungeKutta4<float>::initRK()
+  0.00      0.09     0.00       11     0.00     0.00  DataStruct<float>::~DataStruct()
+  0.00      0.09     0.00        6     0.00     0.00  DataStruct<float>::DataStruct()
+  0.00      0.09     0.00        5     0.00     0.00  DataStruct<float>::DataStruct(int, int)
+  0.00      0.09     0.00        4     0.00     0.00  std::char_traits<char>::length(char const*)
+  0.00      0.09     0.00        4     0.00     0.00  std::__new_allocator<char>::~__new_allocator()
+  0.00      0.09     0.00        4     0.00     0.00  void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)
+  0.00      0.09     0.00        4     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&)
+  0.00      0.09     0.00        4     0.00     0.00  std::__is_constant_evaluated()
+  0.00      0.09     0.00        4     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)::_Guard::_Guard(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*)
+  0.00      0.09     0.00        4     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)::_Guard::~_Guard()
+  0.00      0.09     0.00        2     0.00     3.43  write2File(DataStruct<float>&, DataStruct<float>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)
+  0.00      0.09     0.00        1     0.00     3.43  calcL2norm(DataStruct<float>&, DataStruct<float>&)
+  0.00      0.09     0.00        1     0.00     0.00  RHSOperator<float>::RHSOperator()
+  0.00      0.09     0.00        1     0.00     0.00  RHSOperator<float>::~RHSOperator()
+  0.00      0.09     0.00        1     0.00     0.03  RungeKutta4<float>::RungeKutta4(DataStruct<float>&)
+  0.00      0.09     0.00        1     0.00     0.00  RungeKutta4<float>::~RungeKutta4()
+  0.00      0.09     0.00        1     0.00     0.00  FluxFunction<float>::FluxFunction()
+  0.00      0.09     0.00        1     0.00     0.01  Central1D<float>::Central1D(DataStruct<float>&, DataStruct<float>&, FluxFunction<float>&)
+  0.00      0.09     0.00        1     0.00     0.00  Central1D<float>::~Central1D()
+  0.00      0.09     0.00        1     0.00     0.00  EulerFlux<float>::EulerFlux()
+  0.00      0.09     0.00        1     0.00     0.00  double __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)
+  0.00      0.09     0.00        1     0.00     0.00  int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)
+  0.00      0.09     0.00        1     0.00     0.00  std::__cxx11::stod(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*)
+  0.00      0.09     0.00        1     0.00     0.00  std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int)
+  0.00      0.09     0.00        1     0.00     0.00  std::setprecision(int)
+  0.00      0.09     0.00        1     0.00     0.00  std::sqrt(float)
+  0.00      0.09     0.00        1     0.00     0.00  __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Range_chk::_S_chk(double, std::integral_constant<bool, false>)
+  0.00      0.09     0.00        1     0.00     0.00  __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Save_errno::_Save_errno()
+  0.00      0.09     0.00        1     0.00     0.00  __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Save_errno::~_Save_errno()
+  0.00      0.09     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+  0.00      0.09     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+  0.00      0.09     0.00        1     0.00     0.00  __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 11.11% of 0.09 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00    0.09                 main [1]
+                0.00    0.05     832/832         Central1D<float>::eval(DataStruct<float>&) [2]
+                0.02    0.00     833/833         DataStruct<float>::operator=(DataStruct<float> const&) [4]
+                0.01    0.00     208/208         RungeKutta4<float>::finalizeRK(float) [5]
+                0.00    0.00     832/832         RungeKutta4<float>::stepUi(float) [9]
+                0.00    0.00     832/832         RungeKutta4<float>::setFi(DataStruct<float>&) [8]
+                0.00    0.00       2/2           write2File(DataStruct<float>&, DataStruct<float>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [10]
+                0.00    0.00       1/1           calcL2norm(DataStruct<float>&, DataStruct<float>&) [11]
+                0.00    0.00       1/1           RungeKutta4<float>::RungeKutta4(DataStruct<float>&) [12]
+                0.00    0.00       1/1           Central1D<float>::Central1D(DataStruct<float>&, DataStruct<float>&, FluxFunction<float>&) [13]
+                0.00    0.00       1/1462087     DataStruct<float>::getSize() const [6]
+                0.00    0.00    1500/10500       DataStruct<float>::operator()(int, int) [20]
+                0.00    0.00    1040/1040        RungeKutta4<float>::getNumSteps() [22]
+                0.00    0.00     832/832         RungeKutta4<float>::currentU() [24]
+                0.00    0.00     832/832         Central1D<float>::ref2RHS() [25]
+                0.00    0.00     208/208         RungeKutta4<float>::initRK() [26]
+                0.00    0.00       5/5           DataStruct<float>::DataStruct(int, int) [29]
+                0.00    0.00       5/11          DataStruct<float>::~DataStruct() [27]
+                0.00    0.00       4/4           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&) [33]
+                0.00    0.00       4/4           std::__new_allocator<char>::~__new_allocator() [31]
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [46]
+                0.00    0.00       1/1           std::__cxx11::stod(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*) [45]
+                0.00    0.00       1/1           EulerFlux<float>::EulerFlux() [42]
+                0.00    0.00       1/9530        DataStruct<float>::getData() const [21]
+                0.00    0.00       1/1           std::setprecision(int) [47]
+                0.00    0.00       1/1           Central1D<float>::~Central1D() [41]
+                0.00    0.00       1/1           RungeKutta4<float>::~RungeKutta4() [39]
+-----------------------------------------------
+                0.00    0.05     832/832         main [1]
+[2]     55.6    0.00    0.05     832         Central1D<float>::eval(DataStruct<float>&) [2]
+                0.04    0.01     832/832         Central1D<float>::evalRHS(DataStruct<float>&) [3]
+-----------------------------------------------
+                0.04    0.01     832/832         Central1D<float>::eval(DataStruct<float>&) [2]
+[3]     55.6    0.04    0.01     832         Central1D<float>::evalRHS(DataStruct<float>&) [3]
+                0.01    0.00  832000/832000      EulerFlux<float>::computeFlux(float const&) [7]
+                0.00    0.00     832/1462087     DataStruct<float>::getSize() const [6]
+                0.00    0.00    2496/9530        DataStruct<float>::getData() const [21]
+-----------------------------------------------
+                0.02    0.00     833/833         main [1]
+[4]     22.2    0.02    0.00     833         DataStruct<float>::operator=(DataStruct<float> const&) [4]
+                0.00    0.00     833/1462087     DataStruct<float>::getSize() const [6]
+                0.00    0.00     833/839         DataStruct<float>::setSize(int) [23]
+                0.00    0.00     833/9530        DataStruct<float>::getData() const [21]
+-----------------------------------------------
+                0.01    0.00     208/208         main [1]
+[5]     15.9    0.01    0.00     208         RungeKutta4<float>::finalizeRK(float) [5]
+                0.00    0.00  625248/1462087     DataStruct<float>::getSize() const [6]
+                0.00    0.00    1248/9530        DataStruct<float>::getData() const [21]
+-----------------------------------------------
+                0.00    0.00       1/1462087     main [1]
+                0.00    0.00       1/1462087     Central1D<float>::Central1D(DataStruct<float>&, DataStruct<float>&, FluxFunction<float>&) [13]
+                0.00    0.00       5/1462087     RungeKutta4<float>::RungeKutta4(DataStruct<float>&) [12]
+                0.00    0.00     501/1462087     calcL2norm(DataStruct<float>&, DataStruct<float>&) [11]
+                0.00    0.00     832/1462087     Central1D<float>::evalRHS(DataStruct<float>&) [3]
+                0.00    0.00     833/1462087     DataStruct<float>::operator=(DataStruct<float> const&) [4]
+                0.00    0.00    1002/1462087     write2File(DataStruct<float>&, DataStruct<float>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [10]
+                0.00    0.00  416832/1462087     RungeKutta4<float>::stepUi(float) [9]
+                0.00    0.00  416832/1462087     RungeKutta4<float>::setFi(DataStruct<float>&) [8]
+                0.00    0.00  625248/1462087     RungeKutta4<float>::finalizeRK(float) [5]
+[6]     11.1    0.01    0.00 1462087         DataStruct<float>::getSize() const [6]
+-----------------------------------------------
+                0.01    0.00  832000/832000      Central1D<float>::evalRHS(DataStruct<float>&) [3]
+[7]     11.1    0.01    0.00  832000         EulerFlux<float>::computeFlux(float const&) [7]
+-----------------------------------------------
+                0.00    0.00     832/832         main [1]
+[8]      3.2    0.00    0.00     832         RungeKutta4<float>::setFi(DataStruct<float>&) [8]
+                0.00    0.00  416832/1462087     DataStruct<float>::getSize() const [6]
+                0.00    0.00    1664/9530        DataStruct<float>::getData() const [21]
+-----------------------------------------------
+                0.00    0.00     832/832         main [1]
+[9]      3.2    0.00    0.00     832         RungeKutta4<float>::stepUi(float) [9]
+                0.00    0.00  416832/1462087     DataStruct<float>::getSize() const [6]
+                0.00    0.00    2288/9530        DataStruct<float>::getData() const [21]
+-----------------------------------------------
+                0.00    0.00       2/2           main [1]
+[10]     0.0    0.00    0.00       2         write2File(DataStruct<float>&, DataStruct<float>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [10]
+                0.00    0.00    1002/1462087     DataStruct<float>::getSize() const [6]
+                0.00    0.00    3000/10500       DataStruct<float>::operator()(int, int) [20]
+                0.00    0.00    1000/9530        DataStruct<float>::getData() const [21]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[11]     0.0    0.00    0.00       1         calcL2norm(DataStruct<float>&, DataStruct<float>&) [11]
+                0.00    0.00     501/1462087     DataStruct<float>::getSize() const [6]
+                0.00    0.00    6000/10500       DataStruct<float>::operator()(int, int) [20]
+                0.00    0.00       1/1           std::sqrt(float) [48]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[12]     0.0    0.00    0.00       1         RungeKutta4<float>::RungeKutta4(DataStruct<float>&) [12]
+                0.00    0.00       5/1462087     DataStruct<float>::getSize() const [6]
+                0.00    0.00       5/6           DataStruct<float>::DataStruct() [28]
+                0.00    0.00       5/839         DataStruct<float>::setSize(int) [23]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[13]     0.0    0.00    0.00       1         Central1D<float>::Central1D(DataStruct<float>&, DataStruct<float>&, FluxFunction<float>&) [13]
+                0.00    0.00       1/1462087     DataStruct<float>::getSize() const [6]
+                0.00    0.00       1/1           RHSOperator<float>::RHSOperator() [37]
+                0.00    0.00       1/6           DataStruct<float>::DataStruct() [28]
+                0.00    0.00       1/839         DataStruct<float>::setSize(int) [23]
+-----------------------------------------------
+                0.00    0.00    1500/10500       main [1]
+                0.00    0.00    3000/10500       write2File(DataStruct<float>&, DataStruct<float>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [10]
+                0.00    0.00    6000/10500       calcL2norm(DataStruct<float>&, DataStruct<float>&) [11]
+[20]     0.0    0.00    0.00   10500         DataStruct<float>::operator()(int, int) [20]
+-----------------------------------------------
+                0.00    0.00       1/9530        main [1]
+                0.00    0.00     833/9530        DataStruct<float>::operator=(DataStruct<float> const&) [4]
+                0.00    0.00    1000/9530        write2File(DataStruct<float>&, DataStruct<float>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [10]
+                0.00    0.00    1248/9530        RungeKutta4<float>::finalizeRK(float) [5]
+                0.00    0.00    1664/9530        RungeKutta4<float>::setFi(DataStruct<float>&) [8]
+                0.00    0.00    2288/9530        RungeKutta4<float>::stepUi(float) [9]
+                0.00    0.00    2496/9530        Central1D<float>::evalRHS(DataStruct<float>&) [3]
+[21]     0.0    0.00    0.00    9530         DataStruct<float>::getData() const [21]
+-----------------------------------------------
+                0.00    0.00    1040/1040        main [1]
+[22]     0.0    0.00    0.00    1040         RungeKutta4<float>::getNumSteps() [22]
+-----------------------------------------------
+                0.00    0.00       1/839         Central1D<float>::Central1D(DataStruct<float>&, DataStruct<float>&, FluxFunction<float>&) [13]
+                0.00    0.00       5/839         RungeKutta4<float>::RungeKutta4(DataStruct<float>&) [12]
+                0.00    0.00     833/839         DataStruct<float>::operator=(DataStruct<float> const&) [4]
+[23]     0.0    0.00    0.00     839         DataStruct<float>::setSize(int) [23]
+-----------------------------------------------
+                0.00    0.00     832/832         main [1]
+[24]     0.0    0.00    0.00     832         RungeKutta4<float>::currentU() [24]
+-----------------------------------------------
+                0.00    0.00     832/832         main [1]
+[25]     0.0    0.00    0.00     832         Central1D<float>::ref2RHS() [25]
+-----------------------------------------------
+                0.00    0.00     208/208         main [1]
+[26]     0.0    0.00    0.00     208         RungeKutta4<float>::initRK() [26]
+-----------------------------------------------
+                0.00    0.00       1/11          Central1D<float>::~Central1D() [41]
+                0.00    0.00       5/11          main [1]
+                0.00    0.00       5/11          RungeKutta4<float>::~RungeKutta4() [39]
+[27]     0.0    0.00    0.00      11         DataStruct<float>::~DataStruct() [27]
+-----------------------------------------------
+                0.00    0.00       1/6           Central1D<float>::Central1D(DataStruct<float>&, DataStruct<float>&, FluxFunction<float>&) [13]
+                0.00    0.00       5/6           RungeKutta4<float>::RungeKutta4(DataStruct<float>&) [12]
+[28]     0.0    0.00    0.00       6         DataStruct<float>::DataStruct() [28]
+-----------------------------------------------
+                0.00    0.00       5/5           main [1]
+[29]     0.0    0.00    0.00       5         DataStruct<float>::DataStruct(int, int) [29]
+-----------------------------------------------
+                0.00    0.00       4/4           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&) [33]
+[30]     0.0    0.00    0.00       4         std::char_traits<char>::length(char const*) [30]
+                0.00    0.00       4/4           std::__is_constant_evaluated() [34]
+-----------------------------------------------
+                0.00    0.00       4/4           main [1]
+[31]     0.0    0.00    0.00       4         std::__new_allocator<char>::~__new_allocator() [31]
+-----------------------------------------------
+                0.00    0.00       4/4           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&) [33]
+[32]     0.0    0.00    0.00       4         void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [32]
+                0.00    0.00       4/4           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)::_Guard::_Guard(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*) [35]
+                0.00    0.00       4/4           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)::_Guard::~_Guard() [36]
+-----------------------------------------------
+                0.00    0.00       4/4           main [1]
+[33]     0.0    0.00    0.00       4         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&) [33]
+                0.00    0.00       4/4           std::char_traits<char>::length(char const*) [30]
+                0.00    0.00       4/4           void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [32]
+-----------------------------------------------
+                0.00    0.00       4/4           std::char_traits<char>::length(char const*) [30]
+[34]     0.0    0.00    0.00       4         std::__is_constant_evaluated() [34]
+-----------------------------------------------
+                0.00    0.00       4/4           void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [32]
+[35]     0.0    0.00    0.00       4         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)::_Guard::_Guard(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*) [35]
+-----------------------------------------------
+                0.00    0.00       4/4           void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [32]
+[36]     0.0    0.00    0.00       4         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)::_Guard::~_Guard() [36]
+-----------------------------------------------
+                0.00    0.00       1/1           Central1D<float>::Central1D(DataStruct<float>&, DataStruct<float>&, FluxFunction<float>&) [13]
+[37]     0.0    0.00    0.00       1         RHSOperator<float>::RHSOperator() [37]
+-----------------------------------------------
+                0.00    0.00       1/1           Central1D<float>::~Central1D() [41]
+[38]     0.0    0.00    0.00       1         RHSOperator<float>::~RHSOperator() [38]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[39]     0.0    0.00    0.00       1         RungeKutta4<float>::~RungeKutta4() [39]
+                0.00    0.00       5/11          DataStruct<float>::~DataStruct() [27]
+-----------------------------------------------
+                0.00    0.00       1/1           EulerFlux<float>::EulerFlux() [42]
+[40]     0.0    0.00    0.00       1         FluxFunction<float>::FluxFunction() [40]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[41]     0.0    0.00    0.00       1         Central1D<float>::~Central1D() [41]
+                0.00    0.00       1/11          DataStruct<float>::~DataStruct() [27]
+                0.00    0.00       1/1           RHSOperator<float>::~RHSOperator() [38]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[42]     0.0    0.00    0.00       1         EulerFlux<float>::EulerFlux() [42]
+                0.00    0.00       1/1           FluxFunction<float>::FluxFunction() [40]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__cxx11::stod(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*) [45]
+[43]     0.0    0.00    0.00       1         double __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*) [43]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Save_errno::_Save_errno() [50]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Range_chk::_S_chk(double, std::integral_constant<bool, false>) [49]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Save_errno::~_Save_errno() [51]
+-----------------------------------------------
+                0.00    0.00       1/1           std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [46]
+[44]     0.0    0.00    0.00       1         int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [44]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [53]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [52]
+                0.00    0.00       1/1           __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [54]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[45]     0.0    0.00    0.00       1         std::__cxx11::stod(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*) [45]
+                0.00    0.00       1/1           double __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*) [43]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[46]     0.0    0.00    0.00       1         std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int) [46]
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [44]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[47]     0.0    0.00    0.00       1         std::setprecision(int) [47]
+-----------------------------------------------
+                0.00    0.00       1/1           calcL2norm(DataStruct<float>&, DataStruct<float>&) [11]
+[48]     0.0    0.00    0.00       1         std::sqrt(float) [48]
+-----------------------------------------------
+                0.00    0.00       1/1           double __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*) [43]
+[49]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Range_chk::_S_chk(double, std::integral_constant<bool, false>) [49]
+-----------------------------------------------
+                0.00    0.00       1/1           double __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*) [43]
+[50]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Save_errno::_Save_errno() [50]
+-----------------------------------------------
+                0.00    0.00       1/1           double __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*) [43]
+[51]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Save_errno::~_Save_errno() [51]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [44]
+[52]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>) [52]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [44]
+[53]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno() [53]
+-----------------------------------------------
+                0.00    0.00       1/1           int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [44]
+[54]     0.0    0.00    0.00       1         __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [54]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [11] calcL2norm(DataStruct<float>&, DataStruct<float>&) [12] RungeKutta4<float>::RungeKutta4(DataStruct<float>&) [32] void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)
+  [10] write2File(DataStruct<float>&, DataStruct<float>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [39] RungeKutta4<float>::~RungeKutta4() [33] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&)
+  [23] DataStruct<float>::setSize(int) [40] FluxFunction<float>::FluxFunction() [45] std::__cxx11::stod(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*)
+  [29] DataStruct<float>::DataStruct(int, int) [2] Central1D<float>::eval(DataStruct<float>&) [46] std::__cxx11::stoi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int)
+  [28] DataStruct<float>::DataStruct() [3] Central1D<float>::evalRHS(DataStruct<float>&) [47] std::setprecision(int)
+  [27] DataStruct<float>::~DataStruct() [25] Central1D<float>::ref2RHS() [34] std::__is_constant_evaluated()
+   [4] DataStruct<float>::operator=(DataStruct<float> const&) [13] Central1D<float>::Central1D(DataStruct<float>&, DataStruct<float>&, FluxFunction<float>&) [48] std::sqrt(float)
+  [20] DataStruct<float>::operator()(int, int) [41] Central1D<float>::~Central1D() [49] __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Range_chk::_S_chk(double, std::integral_constant<bool, false>)
+  [37] RHSOperator<float>::RHSOperator() [7] EulerFlux<float>::computeFlux(float const&) [50] __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Save_errno::_Save_errno()
+  [38] RHSOperator<float>::~RHSOperator() [42] EulerFlux<float>::EulerFlux() [51] __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Save_errno::~_Save_errno()
+   [5] RungeKutta4<float>::finalizeRK(float) [43] double __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*) [52] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Range_chk::_S_chk(long, std::integral_constant<bool, true>)
+  [22] RungeKutta4<float>::getNumSteps() [44] int __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int) [53] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::_Save_errno()
+   [8] RungeKutta4<float>::setFi(DataStruct<float>&) [21] DataStruct<float>::getData() const [54] __gnu_cxx::__stoa<long, int, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno()
+  [26] RungeKutta4<float>::initRK() [6] DataStruct<float>::getSize() const [35] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)::_Guard::_Guard(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*)
+   [9] RungeKutta4<float>::stepUi(float) [30] std::char_traits<char>::length(char const*) [36] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)::_Guard::~_Guard()
+  [24] RungeKutta4<float>::currentU() [31] std::__new_allocator<char>::~__new_allocator()
